@@ -17,7 +17,7 @@ private RestauranteService service = null;
 	
 	public void testFindByAll() throws DataException {
 		RestauranteCriteria cr = new RestauranteCriteria();
-		cr.setProvincia((long)1);
+		cr.setIdProvincia((long)27);
 		List<Restaurante> restaurantes = service.findByCriteria(cr, "ES");
 		for (Restaurante r: restaurantes) {
 			System.out.println(r);
@@ -32,7 +32,6 @@ private RestauranteService service = null;
 	public static void main(String[] args) throws DataException {
 		RestauranteServiceTest test = new RestauranteServiceTest() ;
 		test.testFindByAll();
-		test.testFindById();
 		
 	}
 }

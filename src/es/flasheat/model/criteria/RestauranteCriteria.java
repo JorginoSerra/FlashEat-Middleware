@@ -4,6 +4,7 @@ public class RestauranteCriteria {
 	
 	private Integer valoracion = null;
 	private Long idLocalidad = null;
+	private Long idProvincia = null;
 	private Long categoria = null;
 	private Boolean envioGratis = false;
 	
@@ -25,13 +26,21 @@ public class RestauranteCriteria {
 	public void setValoracion(Integer valoracion) {
 		this.valoracion = valoracion;
 	}
-	public void setProvincia(Long provincia) {
-		this.idLocalidad = provincia;
+	public void setLocalidad(Long localidad) {
+		this.idLocalidad = localidad;
 	}
 	public void setCategoria(Long categoria) {
 		this.categoria = categoria;
 	}
 	public void setEnvioGratis(Boolean envioGratis) {
 		this.envioGratis = envioGratis;
+	}
+
+	public Long getIdProvincia() {
+		return idProvincia;
+	}
+
+	public void setIdProvincia(Long idProvincia) {
+		this.idProvincia = idProvincia;
 	}
 }

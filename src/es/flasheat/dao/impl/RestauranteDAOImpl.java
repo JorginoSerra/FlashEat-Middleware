@@ -77,6 +77,13 @@ public class RestauranteDAOImpl implements RestauranteDAO  {
 					querySB.append("       INNER JOIN UBICACION u ON R.ID_UBICACION = u.ID_UBICACION "
 							+"       INNER JOIN LOCALIDAD l ON U.ID_LOCALIDAD = l.ID_LOCALIDAD "); 
 			}
+			if (criterio.getIdProvincia()!=null) {
+				if (criterio.getLocalidad()==null) {
+					querySB.append("       INNER JOIN UBICACION u ON R.ID_UBICACION = u.ID_UBICACION "
+							+"       INNER JOIN LOCALIDAD l ON U.ID_LOCALIDAD = l.ID_LOCALIDAD "); 
+				}
+				querySB.append("       INNER JOIN PROVINCIA pr ON l.ID_PROVINCIA = pr.ID_PROVINCIA "); 
+		}
 			boolean first = false;
 			querySB.append("WHERE ri.ID_IDIOMA = ? ");
 			first = SQLUtils.addClause(criterio.getCategoria(), querySB, first, " r.ID_CATEGORIA = ? ");
@@ -85,6 +92,8 @@ public class RestauranteDAOImpl implements RestauranteDAO  {
 												querySB, first, " r.PRECIO_ENVIO = 0 ");
 			
 			first = SQLUtils.addClause(criterio.getLocalidad(), querySB, first," L.ID_LOCALIDAD = ? ");
+			
+			first = SQLUtils.addClause(criterio.getIdProvincia(), querySB, first, " pr.ID_PROVINCIA = ? ");
 			
 			querySB.append(" GROUP BY R.ID_RESTAURANTE ");
 			//Tiene que ir al final
@@ -109,7 +118,9 @@ public class RestauranteDAOImpl implements RestauranteDAO  {
 			if  (criterio.getValoracion()!=null) {
 				preparedStatement.setInt(i++, criterio.getValoracion());
 			}
-						
+			if  (criterio.getIdProvincia()!=null) {
+				preparedStatement.setLong(i++, criterio.getIdProvincia());
+			}			
 			rs = preparedStatement.executeQuery();
 			// si hay datos en rs añade un Restaurante a la lista con esos datos.
 

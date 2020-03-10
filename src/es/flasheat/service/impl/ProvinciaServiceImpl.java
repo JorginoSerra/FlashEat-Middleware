@@ -2,6 +2,7 @@ package es.flasheat.service.impl;
 
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import es.flasheat.dao.ProvinciaDAO;
@@ -34,7 +35,22 @@ public class ProvinciaServiceImpl implements ProvinciaService{
 			throw new DataException(e);
 		} finally {
 			JDBCUtils.closeConnection(connection);
-			}
+		}
+	}
+	
+	public List<Provincia> findByNombre(String nombre) throws DataException{
+		List<Provincia> results = new ArrayList<Provincia>();
+		Provincia e = new Provincia();
+		e.setCodPais("ESP");
+		e.setCodProvincia((long)27);
+		e.setProvincia("Lugo");
+		results.add(e);
+		Provincia d = new Provincia();
+		d.setCodPais("ESP");
+		d.setCodProvincia((long)28);
+		d.setProvincia("Ourense");
+		results.add(d);
+		return results;
 	}
 
 }

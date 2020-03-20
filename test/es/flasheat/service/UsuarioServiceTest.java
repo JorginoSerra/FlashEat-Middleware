@@ -16,8 +16,9 @@ public class UsuarioServiceTest {
 	}
 	
 	public void testFindById() throws DataException {
-		Usuario usuario = dao.findByEmail("yoimabascal@gmx.es");
-		System.out.println(usuario);
+		Long l1= new Long(4);
+		Long l2= new Long(2);
+		dao.addSeguirRestaurante(l1, l2);
 	}
 	
 	public void testAddUser() throws DataException, MailException {

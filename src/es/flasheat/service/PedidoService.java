@@ -1,5 +1,6 @@
 package es.flasheat.service;
 
+import java.sql.Connection;
 import java.util.Date;
 import java.util.List;
 
@@ -17,6 +18,8 @@ public interface PedidoService {
 	public List<Pedido> findByFecha(Date fechaDesde, Date fechaHasta)throws DataException;
 
 	public void insertar(Pedido p)throws DataException;
+	
+	public void insertarCarrito(Pedido p) throws DataException;
 
 	public Pedido updateStatus(int status, Long id)throws DataException;
 	

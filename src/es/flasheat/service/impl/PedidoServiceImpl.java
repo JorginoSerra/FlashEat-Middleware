@@ -112,6 +112,28 @@ public class PedidoServiceImpl implements PedidoService{
 			JDBCUtils.closeConnection(connection, x);
 		}
 	}
+	
+	@Override
+	public void insertarCarrito(Pedido p) throws DataException {
+		Connection connection = null;
+		boolean x = false;
+		try {
+			connection = DBUtils.conectar(); // ConnectionManager.getConnection();
+			
+			connection.setTransactionIsolation(
+	                    Connection.TRANSACTION_READ_COMMITTED);		
+			
+			connection.setAutoCommit(false);
+			
+			dao.insertarCarrito(connection, p);
+			x = true;
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCUtils.closeConnection(connection, x);
+		}
+	}
 
 	@Override
 	public Pedido updateStatus(int status, Long id) throws DataException {

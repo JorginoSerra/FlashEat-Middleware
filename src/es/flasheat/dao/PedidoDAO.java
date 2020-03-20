@@ -19,6 +19,8 @@ public List<Pedido> findByFecha(Connection connection, Date fechaDesde, Date fec
 
 public void insertar(Connection connection, Pedido p)throws DataException;
 
+public void insertarCarrito(Connection connection, Pedido p) throws DataException;
+
 public Pedido updateStatus(Connection connection, int status, Long id)throws DataException;
 
 public void delete(Connection connection, Long id)throws DataException;

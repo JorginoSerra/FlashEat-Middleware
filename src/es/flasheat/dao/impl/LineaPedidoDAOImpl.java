@@ -74,8 +74,8 @@ public class LineaPedidoDAOImpl implements LineaPedidoDAO{
 		try {
 
 			// Creamos el preparedstatement
-			String queryString = " insert into Linea_Pedido (ID_PEDIDO, PRECIO_TOTAL, ID_PRODUCTO) "
-								+" values (?, ?, ?)";	
+			String queryString = " insert into Linea_Pedido (ID_PEDIDO, PRECIO_TOTAL, ID_PRODUCTO, CANTIDAD) "
+								+" values (?, ?, ?, ?)";	
 			
 			preparedStatement = connection.prepareStatement(queryString,
 									Statement.RETURN_GENERATED_KEYS);
@@ -87,6 +87,7 @@ public class LineaPedidoDAOImpl implements LineaPedidoDAO{
 			preparedStatement.setLong(i++, lp.getIdPedido());
 			preparedStatement.setDouble(i++, lp.getPrecio());
 			preparedStatement.setLong(i++, lp.getIdProducto());
+			preparedStatement.setInt(i++, lp.getCantidad());
 
 			// Execute query
 			int insertedRows = preparedStatement.executeUpdate();
@@ -165,6 +166,7 @@ public class LineaPedidoDAOImpl implements LineaPedidoDAO{
 	linea.setIdPedido(rs.getLong(i++));
 	linea.setPrecio(rs.getDouble(i++));
 	linea.setIdProducto(rs.getLong(i++));
+	linea.setCantidad(rs.getInt(i++));
 	
 	return linea;
 }

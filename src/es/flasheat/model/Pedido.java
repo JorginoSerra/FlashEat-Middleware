@@ -79,14 +79,6 @@ public class Pedido extends AbstractValueObject  {
 		this.idRestaurante = idRestaurante;
 	}
 
-	public Integer getEstado() {
-		return idEstado;
-	}
-
-	public void setEstado(Integer estado) {
-		this.idEstado = estado;
-	}
-
 	public String getInformacionExtra() {
 		return informacionExtra;
 	}

@@ -28,21 +28,18 @@ public class PedidoServiceTest {
 		Pedido p = new Pedido();
 		LineaPedido lp = new LineaPedido();
 		lp.setIdProducto((long)2);
-		lp.setPrecio(12.2);
-		p.setIdUsuario((long)2);
-		p.setIdRestaurante((long)1);
-		p.setInformacionExtra("de refresco una cocacola");
+		lp.setPrecio(66.2);
+		lp.setCantidad(10);
 		p.setFecha(new Date());
-		p.setPrecio(10.20);
+		p.setIdRestaurante((long)1);
+		p.setPrecio(66.2);
 		p.addLinea(lp);
-		dao.insertar(p);
+		dao.insertarCarrito(p);
 		System.out.println(p.getId());
 	}
 	public static void main(String[] args) throws DataException {
 		PedidoServiceTest test = new PedidoServiceTest() ;
 		test.testInsert();
-		test.testFindById();
-		test.testUpdateStatus();
 
 	}
 }

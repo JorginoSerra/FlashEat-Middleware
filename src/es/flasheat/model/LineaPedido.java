@@ -6,6 +6,7 @@ public class LineaPedido extends AbstractValueObject  {
 	private Long idPedido = null;
 	private Long idProducto = null;
 	private Double precio = 0.0d;
+	private Integer cantidad = 0;
 	
 	public Long getIdLineaPedido() {
 		return idLineaPedido;
@@ -30,5 +31,11 @@ public class LineaPedido extends AbstractValueObject  {
 	}
 	public void setPrecio(Double precio) {
 		this.precio = precio;
+	}
+	public Integer getCantidad() {
+		return cantidad;
+	}
+	public void setCantidad(Integer cantidad) {
+		this.cantidad = cantidad;
 	}
 }
